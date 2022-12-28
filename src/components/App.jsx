@@ -23,6 +23,13 @@ addContact = (data) => {
       id: nanoid()
     };
 
+  const isExist = this.state.contacts.find(contact => {
+    return contact.name === data.name;
+  });
+  if (isExist) {
+    alert('contact already exists');
+    return
+  }
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newContact]
     }))
@@ -45,6 +52,7 @@ addContact = (data) => {
     this.setState({ filter: input})
   }
   
+
   render() {
  
     const contacts = this.filterContacts();
