@@ -1,4 +1,9 @@
+import PropTypes from 'prop-types';
+
 import { Component } from 'react';
+
+
+import css from './Form.module.css'
 
 export class ContactForm extends Component {
     state = {
@@ -22,10 +27,12 @@ export class ContactForm extends Component {
     const { name, number } = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
+      <form className={css.Form} onSubmit={this.handleSubmit}>
+        <label 
+        className={css.Label}>
           Name:
-          <input
+          <input 
+            className={css.Input}
             type="text"
             name="name"
             onChange={this.handleChange}
@@ -35,9 +42,11 @@ export class ContactForm extends Component {
             required
           />
         </label>
-        <label>
+        <label 
+        className={css.Label}>
           Number:
           <input
+            className={css.Input}
             type="tel"
             name="number"
             onChange={this.handleChange}
@@ -47,8 +56,12 @@ export class ContactForm extends Component {
             required
           />
         </label>
-        <button type='submit'>Add contact</button>
+        <button className={css.AddBtn} type='submit'>Add contact</button>
       </form>
     )
   }
+}
+
+ContactForm.ropTypes = {
+  addContact: PropTypes.func.isRequired,
 }
